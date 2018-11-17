@@ -95,4 +95,26 @@ const exponent = function(base, exp) {
   return base * exponent(base, exp - 1);
 };
 
-console.log(exponent(10, 4));
+// 8. Determine if a number is a power of two.
+// powerOfTwo(1); // true
+// powerOfTwo(16); // true
+// powerOfTwo(10); // false
+
+const powerOfTwo = function(num) {
+  if (num === 1) {
+    return true;
+  }
+  if (!Number.isInteger(num) || num === 0) {
+    return false;
+  }
+  return powerOfTwo(num / 2);
+};
+
+// 9. Write a function that reverses a string.
+
+const reversString = function(str) {
+  if (str.length === 1) {
+    return str;
+  }
+  return str[str.length - 1].concat(reversString(str.slice(0, str.length - 1)));
+};
