@@ -131,4 +131,35 @@ const isPalindrome = function(str) {
   return isPalindrome(str.slice(1, str.length - 1));
 };
 
-console.log(isPalindrome("sAip puaki v iKaup Pias"));
+// 26. Return the Fibonacci number located at index n of the Fibonacci sequence.
+// [0,1,1,2,3,5,8,13,21]
+// nthFibo(5); // 5
+// nthFibo(7); // 13
+// nthFibo(3); // 2
+const nthFibo = function(n) {
+  if (n < 2) {
+    return n;
+  }
+  return nthFibo(n - 1) + nthFibo(n - 2);
+};
+
+console.log(nthFibo(8));
+// 31. Given a string, return an object containing tallies of each letter.
+// letterTally('potato'); // {p:1, o:2, t:2, a:1}
+const letterTally = function(str, obj = {}) {
+  if (str.length === 0) {
+    return obj;
+  }
+  obj[str[0]] = obj[str[0]] ? ++obj[str[0]] : 1;
+  return letterTally(str.substring(1), obj);
+};
+//console.log(letterTally("potato"));
+// {p:1, o:2, t:2, a:1}
+
+//console.log(isPalindrome("sAip puaki v iKaup Pias"));
+
+// 11. Write a function that returns the remainder of x divided by y without using the
+// modulo (%) operator.
+// modulo(5,2) // 1
+// modulo(17,5) // 2
+// modulo(22,6) // 4
