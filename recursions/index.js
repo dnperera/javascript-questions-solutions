@@ -118,3 +118,17 @@ const reversString = function(str) {
   }
   return str[str.length - 1].concat(reversString(str.slice(0, str.length - 1)));
 };
+
+// 10. Write a function that determines if a string is a palindrome.
+const isPalindrome = function(str) {
+  if (str.length === 1) {
+    return true;
+  }
+  console.log(str);
+  if (str[0].toLowerCase() !== str[str.length - 1].toLowerCase()) {
+    return false;
+  }
+  return isPalindrome(str.slice(1, str.length - 1));
+};
+
+console.log(isPalindrome("sAip puaki v iKaup Pias"));
