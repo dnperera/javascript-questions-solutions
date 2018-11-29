@@ -124,13 +124,40 @@ const isPalindrome = function(str) {
   if (str.length === 1) {
     return true;
   }
-  console.log(str);
   if (str[0].toLowerCase() !== str[str.length - 1].toLowerCase()) {
     return false;
   }
   return isPalindrome(str.slice(1, str.length - 1));
 };
 
+// 11. Write a function that returns the remainder of x divided by y without using the
+// modulo (%) operator.
+// modulo(5,2) // 1
+// modulo(17,5) // 2
+// modulo(22,6) // 4
+
+const modulo = function(x, y) {
+  if (x === 0 && y === 0) {
+    return NaN;
+  }
+  if (y === 0) {
+    return Infinity;
+  }
+  if (x === 0) {
+    return 0;
+  }
+  if (x < y) {
+    return x;
+  }
+  return modulo(x - y, y);
+};
+// 12. Write a function that multiplies two numbers without using the * operator or
+// Math methods.
+const multiply = function(x, y) {
+  if (x === 0 || y === 0) {
+    return 0;
+  }
+};
 // 26. Return the Fibonacci number located at index n of the Fibonacci sequence.
 // [0,1,1,2,3,5,8,13,21]
 // nthFibo(5); // 5
@@ -194,9 +221,9 @@ const nestedEvenSum = function(obj) {
   }
   return evenTot;
 };
-console.log(nestedEvenSum(obj1));
-// 10
-//var nestedEvenSum = function(obj) {};
+//console.log(nestedEvenSum(obj1));
+// 20
+
 // 31. Given a string, return an object containing tallies of each letter.
 // letterTally('potato'); // {p:1, o:2, t:2, a:1}
 const letterTally = function(str, obj = {}) {
