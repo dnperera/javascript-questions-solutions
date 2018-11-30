@@ -43,6 +43,7 @@ const isAuthorised = permission => {
         return originalFunc(...args);
       }
     };
+    return descriptor;
   };
 };
 const names = {
@@ -60,3 +61,13 @@ const names = {
     this.listofNames.delete(name);
   }
 };
+
+names.add("Dayan");
+names.add("Dasith");
+names.add("Denith");
+console.log(names.get());
+
+console.log(User);
+//User.permissions.push('delete')
+names.remove("Dasith");
+console.log(names.get());
