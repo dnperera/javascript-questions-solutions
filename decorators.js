@@ -27,3 +27,36 @@ const obj = {
 };
 
 console.log(obj.squareAll(new Array(1000).fill(5)));
+
+/* Decorator to check user has rights to add ,view or delete */
+
+//Assume User has following permissions except delete
+const User = { permissions: ["read", "create"] };
+
+const isAuthorised = permission => {
+  return function(target, key, descriptor) {
+    const originalFunc = descriptor.value.bind(target); //bind the correct context
+    descriptor.value = function(...args) {
+      if (!User.permissions.includes(permission)) {
+        return console.error(`You do not have ${permission} permission .`);
+      } else {
+        return originalFunc(...args);
+      }
+    };
+  };
+};
+const names = {
+  listofNames: new Set(),
+  @isAuthorised("read")
+  get() {
+    return Array.from(this.listofNames);
+  },
+  @isAuthorised("create")
+  add(name) {
+    this.listofNames.add(name);
+  },
+  @isAuthorised("delete")
+  remove(name) {
+    this.listofNames.delete(name);
+  }
+};
