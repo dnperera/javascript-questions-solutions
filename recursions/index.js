@@ -158,6 +158,59 @@ const multiply = function(x, y) {
     return 0;
   }
 };
+// 15. Write a function that compares each character of two strings and returns true if
+// both are identical.
+// compareStr('house', 'houses') // false
+// compareStr('tomato', 'tomato') // true
+
+const compareStr = function(str1, str2) {
+  if (str1.length !== str2.length) {
+    return false;
+  }
+  if (str1[0] === str2[0]) {
+    if (str1.length > 1 && str2.length > 1) {
+      return compareStr(str1.slice(1), str2.slice(1));
+    } else {
+      return true;
+    }
+  } else {
+    return false;
+  }
+};
+
+// 16. Write a function that accepts a string and creates an array where each letter
+// occupies an index of the array.
+const createArray = function(str) {
+  if (str.length === 0) {
+    return [];
+  }
+  if (str.length === 1) {
+    return [str];
+  }
+  return [str[0]].concat(createArray(str.slice(1)));
+};
+// 17. Reverse the order of an array
+const reverseArray = function(array) {
+  if (array.length === 0) {
+    return [];
+  }
+  return [array.pop()].concat(reverseArray(array));
+};
+//console.log(reverseArray(["d", "a", "s", "i", "t", "h"]));
+
+// 18. Create a new array with a given value and length.
+// buildList(0,5) // [0,0,0,0,0]
+// buildList(7,3) // [7,7,7]
+const buildList = function(value, length) {
+  if (length === 0) {
+    return [];
+  }
+  if (length === 1) {
+    return [value];
+  }
+  return [value].concat(buildList(value, length - 1));
+};
+console.log(buildList(8, 8)); // [0,0,0,0,0]
 // 26. Return the Fibonacci number located at index n of the Fibonacci sequence.
 // [0,1,1,2,3,5,8,13,21]
 // nthFibo(5); // 5
