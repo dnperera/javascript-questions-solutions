@@ -210,7 +210,50 @@ const buildList = function(value, length) {
   }
   return [value].concat(buildList(value, length - 1));
 };
-console.log(buildList(8, 8)); // [0,0,0,0,0]
+//console.log(buildList(8, 8)); // [0,0,0,0,0]
+// 20. Count the occurence of a value in a list.
+// countOccurrence([2,7,4,4,1,4], 4) // 3
+// countOccurrence([2,'banana',4,4,1,'banana'], 'banana') // 2
+const countOccurrence = function(array, value, total = 0) {
+  if (array.length === 0) {
+    return total;
+  }
+  if (array.pop() === value) {
+    total += 1;
+  }
+  return countOccurrence(array, value, total);
+};
+//console.log(countOccurrence([2, "banana", 4, 4, 1, "banana"], "banana"));
+
+// 21. Write a recursive version of map.
+// rMap([1,2,3], timesTwo); // [2,4,6]
+var rMap = function(array, callback) {
+  if (array.length === 0) {
+    return [];
+  }
+  return [callback(array.shift())].concat(rMap(array, callback));
+};
+// console.log(
+//   rMap([1, 2, 3], function(value) {
+//     return 2 * value;
+//   })
+// );
+// 22. Write a function that counts the number of times a key occurs in an object.
+let obj = { e: { x: "y" }, t: { r: { e: "r" }, p: { y: "r" } }, y: "e" };
+// countKeysInObj(obj, 'r') // 1
+// countKeysInObj(obj, 'e') // 2
+const countKeysInObj = function(obj, key, occurance = 0) {
+  for (let prop in obj) {
+    if (prop === key) {
+      occurance = occurance + 1;
+    }
+    if (typeof obj[prop] === "object") {
+      return countKeysInObj(obj[prop], key, occurance);
+    }
+  }
+  return occurance;
+};
+console.log(countKeysInObj(obj, "e")); // 2
 // 26. Return the Fibonacci number located at index n of the Fibonacci sequence.
 // [0,1,1,2,3,5,8,13,21]
 // nthFibo(5); // 5
